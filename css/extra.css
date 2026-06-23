@@ -176,6 +176,13 @@ h2 {
   margin: 1rem auto 1.25rem;
 }
 
+.case-image-on-white {
+  box-sizing: border-box;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1rem;
+}
+
 @media (max-width: 560px) {
   .case-image-70 {
     width: 100%;

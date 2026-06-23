@@ -1,0 +1,25 @@
+<svg width="626" height="626" viewBox="0 0 626 626" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="1" y="1" width="624" height="624" fill="#FFFFFF" stroke="#111111" stroke-width="2"/>
+  <path d="M558 54L580 76M580 54L558 76" stroke="#8C8C8C" stroke-width="3" stroke-linecap="round"/>
+
+  <text x="313" y="118" text-anchor="middle" fill="#172A45" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">
+    <tspan x="313" dy="0">Получайте письма Учебника</tspan>
+    <tspan x="313" dy="44">на удобную почту</tspan>
+  </text>
+
+  <text x="313" y="230" text-anchor="middle" fill="#273A55" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400">
+    <tspan x="313" dy="0">Если почта в аккаунте не основная,</tspan>
+    <tspan x="313" dy="30">добавьте адрес, который проверяете чаще.</tspan>
+    <tspan x="313" dy="30">Мы будем отправлять письма Учебника ещё и туда.</tspan>
+  </text>
+
+  <text x="96" y="360" fill="#8A94A3" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400">name@example.com</text>
+  <line x1="96" y1="376" x2="535" y2="376" stroke="#50647D" stroke-width="1.5"/>
+
+  <rect x="96" y="400" width="439" height="60" rx="6" fill="#FFDB4D"/>
+  <text x="316" y="437" text-anchor="middle" fill="#172A45" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">Добавить адрес</text>
+
+  <text x="313" y="505" text-anchor="middle" fill="#126DFF" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400">Не сейчас</text>
+
+  <text x="313" y="552" text-anchor="middle" fill="#6D7480" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400">Адрес можно изменить или удалить в настройках.</text>
+</svg>

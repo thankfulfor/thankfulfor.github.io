@@ -109,6 +109,15 @@ body {
   margin: 1.25rem 0 1.5rem;
   border-inline-start: 3px solid #4c4c4c;
   background: #121212;
+  padding: 1.1rem 1.4rem;
+}
+
+.post-content blockquote p {
+  margin: 0;
+}
+
+.post-content blockquote p + p {
+  margin-top: 1rem;
 }
 
 .skill-chips {

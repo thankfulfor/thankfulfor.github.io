@@ -106,6 +106,7 @@ body {
 }
 
 .post-content blockquote {
+  margin: 1.25rem 0 1.5rem;
   border-inline-start: 3px solid #4c4c4c;
   background: #121212;
 }
@@ -174,13 +175,6 @@ h2 {
   width: 70%;
   height: auto;
   margin: 1rem auto 1.25rem;
-}
-
-.case-image-on-white {
-  box-sizing: border-box;
-  background: #ffffff;
-  border-radius: 12px;
-  padding: 1rem;
 }
 
 @media (max-width: 560px) {

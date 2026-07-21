@@ -1,0 +1,298 @@
+<!doctype html><html lang=ru dir=auto data-theme=dark><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>AsyncAPI-визуализация comment.create | Портфолио</title><meta name=keywords content><meta name=description content="Полный YAML-файл и визуальный разбор AsyncAPI-схемы Socket.IO-метода comment.create."><meta name=author content><link rel=canonical href=https://thankfulfor.github.io/pastvu-comment-create-asyncapi/><link crossorigin=anonymous href=/assets/css/stylesheet.47e51c7d8489b002361bac156ce9a0a8776d08c5462c2cee95801efafdd90d35.css integrity="sha256-R+UcfYSJsAI2G6wVbOmgqHdtCMVGLCzulYAe+v3ZDTU=" rel="preload stylesheet" as=style><link rel=icon href=https://thankfulfor.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://thankfulfor.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://thankfulfor.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://thankfulfor.github.io/apple-touch-icon.png><link rel=mask-icon href=https://thankfulfor.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=ru href=https://thankfulfor.github.io/pastvu-comment-create-asyncapi/><noscript><style>#theme-toggle,.top-link{display:none}</style></noscript><link rel=stylesheet href="/css/extra.css?v=2"><meta property="og:url" content="https://thankfulfor.github.io/pastvu-comment-create-asyncapi/"><meta property="og:site_name" content="Портфолио"><meta property="og:title" content="AsyncAPI-визуализация comment.create"><meta property="og:description" content="Полный YAML-файл и визуальный разбор AsyncAPI-схемы Socket.IO-метода comment.create."><meta property="og:locale" content="ru_ru"><meta property="og:type" content="article"><meta name=twitter:card content="summary"><meta name=twitter:title content="AsyncAPI-визуализация comment.create"><meta name=twitter:description content="Полный YAML-файл и визуальный разбор AsyncAPI-схемы Socket.IO-метода comment.create."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"AsyncAPI-визуализация comment.create","item":"https://thankfulfor.github.io/pastvu-comment-create-asyncapi/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"AsyncAPI-визуализация comment.create","name":"AsyncAPI-визуализация comment.create","description":"Полный YAML-файл и визуальный разбор AsyncAPI-схемы Socket.IO-метода comment.create.","keywords":[],"articleBody":" AsyncAPI 3.1.0 · Socket.IO action\nНа странице показаны полный файл schemas/comment.create.yaml и человекочитаемая визуализация того же контракта: сервер, каналы, операция, request/response, схемы и примеры.\nВернуться к кейсуОткрыть YAML с подсветкойschemas/comment.create.yamlvalidasyncapi: 3.1.0 id: urn:pastvu:socketio:comment-create info: title: PastVu comment.create Socket.IO API version: 1.0.0 description: \u003e AsyncAPI-описание Socket.IO action `comment.create`. Метод создаёт комментарий к фотографии или новости, ответ на существующий комментарий или комментарий к фрагменту фотографии. defaultContentType: application/json servers: local: host: localhost:3000 protocol: socket.io description: Локальное окружение PastVu. channels: commentCreate: address: comment.create title: comment.create request description: Socket.IO action для создания комментария. messages: commentCreateRequest: $ref: \"#/components/messages/commentCreateRequest\" commentCreateReply: address: null title: comment.create reply description: \u003e Ответ приходит в callback Socket.IO/RPC-вызова. Отдельный адрес ответа в коде не задан. messages: commentCreateResponse: $ref: \"#/components/messages/commentCreateResponse\" operations: createComment: title: Создать комментарий summary: Создаёт комментарий к фотографии или новости. description: \u003e Frontend отправляет Socket.IO action `comment.create` с payload. Backend возвращает созданный комментарий и, если нужно, данные фрагмента фотографии. action: send channel: $ref: \"#/channels/commentCreate\" messages: - $ref: \"#/channels/commentCreate/messages/commentCreateRequest\" reply: channel: $ref: \"#/channels/commentCreateReply\" messages: - $ref: \"#/channels/commentCreateReply/messages/commentCreateResponse\" components: messages: commentCreateRequest: name: commentCreateRequest title: Request payload для comment.create contentType: application/json payload: $ref: \"#/components/schemas/commentCreateRequestPayload\" examples: - name: commentToPhoto summary: Комментарий первого уровня к фотографии. payload: type: photo obj: 2 txt: Это комментарий первого уровня. - name: replyToComment summary: Ответ на существующий комментарий. payload: type: photo obj: 2 txt: Это ответ на комментарий. parent: 13 level: 1 - name: commentToPhotoFragment summary: Комментарий к выделенному фрагменту фотографии. payload: type: photo obj: 2 txt: Это комментарий к фрагменту. fragObj: l: 10.9 t: 6.487341772151899 w: 23.3 h: 36.86708860759494 commentCreateResponse: name: commentCreateResponse title: Response payload для comment.create contentType: application/json payload: $ref: \"#/components/schemas/commentCreateResponsePayload\" examples: - name: createdPhotoComment summary: Успешный ответ при создании комментария к фотографии. payload: result: comment: cid: 13 obj: 2 user: admin stamp: \"2026-07-03T16:12:43.224Z\" txt: Это комментарий первого уровня. can: {} level: 0 geo: - -121.596679 - 33.027375 r0: 1000000 s: 5 type: 1 responseTime: 31 rid: bvo2t8zcvb schemas: commentCreateRequestPayload: type: object required: - obj - txt additionalProperties: true properties: obj: type: number description: cid фотографии или новости, к которой добавляется комментарий. txt: type: string maxLength: 12000 description: Текст комментария. type: type: string enum: - photo - news description: Тип объекта, к которому добавляется комментарий. parent: type: number description: cid родительского комментария, к которому добавляется ответ. level: type: number maximum: 9 description: Уровень вложенности ответа. Передаётся вместе с parent. fragObj: $ref: \"#/components/schemas/commentFragmentInput\" commentFragmentInput: type: object description: Координаты выделенного фрагмента фотографии. properties: l: type: number description: Отступ слева от изображения, в процентах. t: type: number description: Отступ сверху от изображения, в процентах. w: type: number description: Ширина выделенного фрагмента, в процентах. h: type: number description: Высота выделенного фрагмента, в процентах. commentCreateResponsePayload: type: object required: - result properties: result: type: object required: - comment properties: comment: $ref: \"#/components/schemas/createdComment\" frag: $ref: \"#/components/schemas/commentFragment\" rid: type: string description: Идентификатор Socket.IO/RPC-запроса. responseTime: type: number description: Время обработки запроса в миллисекундах. createdComment: type: object required: - cid - obj - user - stamp - txt - can - level properties: cid: type: number description: cid созданного комментария. obj: type: number description: cid фотографии или новости. user: type: string description: Логин пользователя, создавшего комментарий. stamp: type: string format: date-time description: Дата и время создания комментария. txt: type: string description: Текст комментария после обработки backend. can: type: object description: Объект прав для комментария. level: type: number description: Уровень вложенности комментария. parent: type: number description: cid родительского комментария. frag: type: boolean description: true, если комментарий привязан к фрагменту фотографии. s: type: number description: Статус фотографии. type: type: number enum: - 1 - 2 description: \"Числовой тип изображения: 1 — фотография, 2 — картина.\" geo: type: array items: type: number description: \"Координаты фотографии в формате [lng, lat].\" r0: type: number description: Идентификатор региона фотографии уровня 0. r1: type: number description: Идентификатор региона фотографии уровня 1. r2: type: number description: Идентификатор региона фотографии уровня 2. r3: type: number description: Идентификатор региона фотографии уровня 3. r4: type: number description: Идентификатор региона фотографии уровня 4. r5: type: number description: Идентификатор региона фотографии уровня 5. commentFragment: type: object description: Данные фрагмента фотографии. Возвращается только для комментария к фрагменту. properties: cid: type: number description: cid комментария, к которому относится фрагмент. l: type: number description: Отступ слева от изображения, в процентах. t: type: number description: Отступ сверху от изображения, в процентах. w: type: number description: Ширина выделенного фрагмента, в процентах. h: type: number description: Высота выделенного фрагмента, в процентах. PastVu comment.create Socket.IO API 1.0.0Метод создаёт комментарий к фотографии или новости, ответ на существующий комментарий или комментарий к фрагменту фотографии.\nSocket.IOapplication/jsonsend / replyServerlocalHostlocalhost:3000Protocolsocket.ioChannelscommentCreatecomment.create — Socket.IO action для создания комментария.commentCreateReplyОтвет приходит в callback Socket.IO/RPC-вызова. Отдельный адрес ответа в коде не задан.OperationsendcreateCommentСоздаёт комментарий к фотографии или новости.Request messagecommentCreateRequest с payload commentCreateRequestPayload.Reply messagecommentCreateResponse с payload commentCreateResponsePayload.Request Payloadobjnumber · requiredcid фотографии или новости, к которой добавляется комментарий.txtstring · requiredТекст комментария. Максимальная длина — 12 000 символов.typephoto | newsТип объекта, к которому добавляется комментарий.parentnumbercid родительского комментария, к которому добавляется ответ.levelnumber · max 9Уровень вложенности ответа. Передаётся вместе с parent.fragObjobjectКоординаты выделенного фрагмента фотографии: l, t, w, h.Response Payloadresult.commentobject · requiredСозданный комментарий: cid, obj, user, stamp, txt, can, level.result.fragobjectДанные фрагмента фотографии. Возвращается только для комментария к фрагменту.ridstringИдентификатор Socket.IO/RPC-запроса.responseTimenumberВремя обработки запроса в миллисекундах.MessagescommentCreateRequestRequest payload для comment.create. Содержит три примера: комментарий к фото, ответ на комментарий, комментарий к фрагменту.commentCreateResponseResponse payload для comment.create. Пример показывает созданный комментарий к фотографии.ExamplesКомментарий первого уровня к фотографииtype: photo obj: 2 txt: Это комментарий первого уровня.Ответ на существующий комментарийtype: photo obj: 2 txt: Это ответ на комментарий. parent: 13 level: 1Комментарий к выделенному фрагменту фотографииtype: photo obj: 2 txt: Это комментарий к фрагменту. fragObj: l: 10.9 t: 6.487341772151899 w: 23.3 h: 36.86708860759494 ","wordCount":"910","inLanguage":"ru","datePublished":"0001-01-01T00:00:00Z","dateModified":"0001-01-01T00:00:00Z","mainEntityOfPage":{"@type":"WebPage","@id":"https://thankfulfor.github.io/pastvu-comment-create-asyncapi/"},"publisher":{"@type":"Organization","name":"Портфолио","logo":{"@type":"ImageObject","url":"https://thankfulfor.github.io/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=header-nav><div class=logo><a href=https://thankfulfor.github.io/ accesskey=h title="Портфолио (Alt + H)">Портфолио</a></div><ul id=menu class=menu></ul></nav></header><main class=main><article class=post-single><header class=post-header><nav class=breadcrumbs role=navigation aria-label=Breadcrumb><a href=/>Главная</a><span class=breadcrumb-separator>/</span>
+<a href=/pastvu-internal-api-case/>API-документация: AsyncAPI для Socket.IO-метода comment.create</a><span class=breadcrumb-separator>/</span>
+<span class=breadcrumb-current>AsyncAPI-визуализация comment.create</span></nav><h1 class="post-title entry-hint-parent">AsyncAPI-визуализация comment.create</h1><div class=post-description>Полный YAML-файл и визуальный разбор AsyncAPI-схемы Socket.IO-метода comment.create.</div><div class=post-meta><span>5 минут</span></div></header><div class="post-content md-content"><section class=asyncapi-page><header class=asyncapi-page__header><p class=asyncapi-page__kicker>AsyncAPI 3.1.0 · Socket.IO action</p><p class=asyncapi-page__lead>На странице показаны полный файл <code>schemas/comment.create.yaml</code> и человекочитаемая визуализация того же контракта: сервер, каналы, операция, request/response, схемы и примеры.</p><div class=asyncapi-page__actions><a class=asyncapi-page__action href=/pastvu-internal-api-case/>Вернуться к кейсу</a><a class=asyncapi-page__action href=/comment.create.yaml/>Открыть YAML с подсветкой</a></div></header><div class=asyncapi-page__layout><section class=asyncapi-page__source aria-label="Полный YAML-файл"><div class=asyncapi-page__source-head><span class=asyncapi-page__source-title>schemas/comment.create.yaml</span><span class=asyncapi-page__source-badge>valid</span></div><pre class=asyncapi-page__code><code>asyncapi: 3.1.0
+id: urn:pastvu:socketio:comment-create
+
+info:
+  title: PastVu comment.create Socket.IO API
+  version: 1.0.0
+  description: &gt;
+    AsyncAPI-описание Socket.IO action `comment.create`.
+    Метод создаёт комментарий к фотографии или новости, ответ на существующий
+    комментарий или комментарий к фрагменту фотографии.
+
+defaultContentType: application/json
+
+servers:
+  local:
+    host: localhost:3000
+    protocol: socket.io
+    description: Локальное окружение PastVu.
+
+channels:
+  commentCreate:
+    address: comment.create
+    title: comment.create request
+    description: Socket.IO action для создания комментария.
+    messages:
+      commentCreateRequest:
+        $ref: "#/components/messages/commentCreateRequest"
+  commentCreateReply:
+    address: null
+    title: comment.create reply
+    description: &gt;
+      Ответ приходит в callback Socket.IO/RPC-вызова. Отдельный адрес ответа
+      в коде не задан.
+    messages:
+      commentCreateResponse:
+        $ref: "#/components/messages/commentCreateResponse"
+
+operations:
+  createComment:
+    title: Создать комментарий
+    summary: Создаёт комментарий к фотографии или новости.
+    description: &gt;
+      Frontend отправляет Socket.IO action `comment.create` с payload.
+      Backend возвращает созданный комментарий и, если нужно, данные фрагмента фотографии.
+    action: send
+    channel:
+      $ref: "#/channels/commentCreate"
+    messages:
+      - $ref: "#/channels/commentCreate/messages/commentCreateRequest"
+    reply:
+      channel:
+        $ref: "#/channels/commentCreateReply"
+      messages:
+        - $ref: "#/channels/commentCreateReply/messages/commentCreateResponse"
+
+components:
+  messages:
+    commentCreateRequest:
+      name: commentCreateRequest
+      title: Request payload для comment.create
+      contentType: application/json
+      payload:
+        $ref: "#/components/schemas/commentCreateRequestPayload"
+      examples:
+        - name: commentToPhoto
+          summary: Комментарий первого уровня к фотографии.
+          payload:
+            type: photo
+            obj: 2
+            txt: Это комментарий первого уровня.
+        - name: replyToComment
+          summary: Ответ на существующий комментарий.
+          payload:
+            type: photo
+            obj: 2
+            txt: Это ответ на комментарий.
+            parent: 13
+            level: 1
+        - name: commentToPhotoFragment
+          summary: Комментарий к выделенному фрагменту фотографии.
+          payload:
+            type: photo
+            obj: 2
+            txt: Это комментарий к фрагменту.
+            fragObj:
+              l: 10.9
+              t: 6.487341772151899
+              w: 23.3
+              h: 36.86708860759494
+
+    commentCreateResponse:
+      name: commentCreateResponse
+      title: Response payload для comment.create
+      contentType: application/json
+      payload:
+        $ref: "#/components/schemas/commentCreateResponsePayload"
+      examples:
+        - name: createdPhotoComment
+          summary: Успешный ответ при создании комментария к фотографии.
+          payload:
+            result:
+              comment:
+                cid: 13
+                obj: 2
+                user: admin
+                stamp: "2026-07-03T16:12:43.224Z"
+                txt: Это комментарий первого уровня.
+                can: {}
+                level: 0
+                geo:
+                  - -121.596679
+                  - 33.027375
+                r0: 1000000
+                s: 5
+                type: 1
+            responseTime: 31
+            rid: bvo2t8zcvb
+
+  schemas:
+    commentCreateRequestPayload:
+      type: object
+      required:
+        - obj
+        - txt
+      additionalProperties: true
+      properties:
+        obj:
+          type: number
+          description: cid фотографии или новости, к которой добавляется комментарий.
+        txt:
+          type: string
+          maxLength: 12000
+          description: Текст комментария.
+        type:
+          type: string
+          enum:
+            - photo
+            - news
+          description: Тип объекта, к которому добавляется комментарий.
+        parent:
+          type: number
+          description: cid родительского комментария, к которому добавляется ответ.
+        level:
+          type: number
+          maximum: 9
+          description: Уровень вложенности ответа. Передаётся вместе с parent.
+        fragObj:
+          $ref: "#/components/schemas/commentFragmentInput"
+
+    commentFragmentInput:
+      type: object
+      description: Координаты выделенного фрагмента фотографии.
+      properties:
+        l:
+          type: number
+          description: Отступ слева от изображения, в процентах.
+        t:
+          type: number
+          description: Отступ сверху от изображения, в процентах.
+        w:
+          type: number
+          description: Ширина выделенного фрагмента, в процентах.
+        h:
+          type: number
+          description: Высота выделенного фрагмента, в процентах.
+
+    commentCreateResponsePayload:
+      type: object
+      required:
+        - result
+      properties:
+        result:
+          type: object
+          required:
+            - comment
+          properties:
+            comment:
+              $ref: "#/components/schemas/createdComment"
+            frag:
+              $ref: "#/components/schemas/commentFragment"
+        rid:
+          type: string
+          description: Идентификатор Socket.IO/RPC-запроса.
+        responseTime:
+          type: number
+          description: Время обработки запроса в миллисекундах.
+
+    createdComment:
+      type: object
+      required:
+        - cid
+        - obj
+        - user
+        - stamp
+        - txt
+        - can
+        - level
+      properties:
+        cid:
+          type: number
+          description: cid созданного комментария.
+        obj:
+          type: number
+          description: cid фотографии или новости.
+        user:
+          type: string
+          description: Логин пользователя, создавшего комментарий.
+        stamp:
+          type: string
+          format: date-time
+          description: Дата и время создания комментария.
+        txt:
+          type: string
+          description: Текст комментария после обработки backend.
+        can:
+          type: object
+          description: Объект прав для комментария.
+        level:
+          type: number
+          description: Уровень вложенности комментария.
+        parent:
+          type: number
+          description: cid родительского комментария.
+        frag:
+          type: boolean
+          description: true, если комментарий привязан к фрагменту фотографии.
+        s:
+          type: number
+          description: Статус фотографии.
+        type:
+          type: number
+          enum:
+            - 1
+            - 2
+          description: "Числовой тип изображения: 1 — фотография, 2 — картина."
+        geo:
+          type: array
+          items:
+            type: number
+          description: "Координаты фотографии в формате [lng, lat]."
+        r0:
+          type: number
+          description: Идентификатор региона фотографии уровня 0.
+        r1:
+          type: number
+          description: Идентификатор региона фотографии уровня 1.
+        r2:
+          type: number
+          description: Идентификатор региона фотографии уровня 2.
+        r3:
+          type: number
+          description: Идентификатор региона фотографии уровня 3.
+        r4:
+          type: number
+          description: Идентификатор региона фотографии уровня 4.
+        r5:
+          type: number
+          description: Идентификатор региона фотографии уровня 5.
+
+    commentFragment:
+      type: object
+      description: Данные фрагмента фотографии. Возвращается только для комментария к фрагменту.
+      properties:
+        cid:
+          type: number
+          description: cid комментария, к которому относится фрагмент.
+        l:
+          type: number
+          description: Отступ слева от изображения, в процентах.
+        t:
+          type: number
+          description: Отступ сверху от изображения, в процентах.
+        w:
+          type: number
+          description: Ширина выделенного фрагмента, в процентах.
+        h:
+          type: number
+          description: Высота выделенного фрагмента, в процентах.
+</code></pre></section><section class=asyncapi-page__render aria-label="Визуализация AsyncAPI-схемы"><div class=asyncapi-render><section class=asyncapi-render__hero><h2 class=asyncapi-render__title>PastVu comment.create Socket.IO API 1.0.0</h2><p class=asyncapi-render__text>Метод создаёт комментарий к фотографии или новости, ответ на существующий комментарий или комментарий к фрагменту фотографии.</p><div class=asyncapi-render__chips><span class=asyncapi-render__chip>Socket.IO</span><span class=asyncapi-render__chip>application/json</span><span class=asyncapi-render__chip>send / reply</span></div></section><section class=asyncapi-render__section><div class=asyncapi-render__head><h2>Server</h2><span class=asyncapi-render__chip>local</span></div><div class=asyncapi-render__body><div class=asyncapi-render__grid><div class=asyncapi-render__item><div class=asyncapi-render__label>Host</div><div class=asyncapi-render__value>localhost:3000</div></div><div class=asyncapi-render__item><div class=asyncapi-render__label>Protocol</div><div class=asyncapi-render__value>socket.io</div></div></div></div></section><section class=asyncapi-render__section><div class=asyncapi-render__head><h2>Channels</h2></div><div class=asyncapi-render__body><div class=asyncapi-render__list><div class=asyncapi-render__row><strong>commentCreate</strong><span><code>comment.create</code> — Socket.IO action для создания комментария.</span></div><div class=asyncapi-render__row><strong>commentCreateReply</strong><span>Ответ приходит в callback Socket.IO/RPC-вызова. Отдельный адрес ответа в коде не задан.</span></div></div></div></section><section class=asyncapi-render__section><div class=asyncapi-render__head><h2>Operation</h2><span class=asyncapi-render__chip>send</span></div><div class=asyncapi-render__body><div class=asyncapi-render__list><div class=asyncapi-render__row><strong>createComment</strong><span>Создаёт комментарий к фотографии или новости.</span></div><div class=asyncapi-render__row><strong>Request message</strong><span><code>commentCreateRequest</code> с payload <code>commentCreateRequestPayload</code>.</span></div><div class=asyncapi-render__row><strong>Reply message</strong><span><code>commentCreateResponse</code> с payload <code>commentCreateResponsePayload</code>.</span></div></div></div></section><section class=asyncapi-render__section><div class=asyncapi-render__head><h2>Request Payload</h2></div><div class=asyncapi-render__body><div class=asyncapi-render__schema><div class=asyncapi-render__schema-row><strong>obj</strong><code>number · required</code><span><code>cid</code> фотографии или новости, к которой добавляется комментарий.</span></div><div class=asyncapi-render__schema-row><strong>txt</strong><code>string · required</code><span>Текст комментария. Максимальная длина — 12 000 символов.</span></div><div class=asyncapi-render__schema-row><strong>type</strong><code>photo | news</code><span>Тип объекта, к которому добавляется комментарий.</span></div><div class=asyncapi-render__schema-row><strong>parent</strong><code>number</code><span><code>cid</code> родительского комментария, к которому добавляется ответ.</span></div><div class=asyncapi-render__schema-row><strong>level</strong><code>number · max 9</code><span>Уровень вложенности ответа. Передаётся вместе с <code>parent</code>.</span></div><div class=asyncapi-render__schema-row><strong>fragObj</strong><code>object</code><span>Координаты выделенного фрагмента фотографии: <code>l</code>, <code>t</code>, <code>w</code>, <code>h</code>.</span></div></div></div></section><section class=asyncapi-render__section><div class=asyncapi-render__head><h2>Response Payload</h2></div><div class=asyncapi-render__body><div class=asyncapi-render__schema><div class=asyncapi-render__schema-row><strong>result.comment</strong><code>object · required</code><span>Созданный комментарий: <code>cid</code>, <code>obj</code>, <code>user</code>, <code>stamp</code>, <code>txt</code>, <code>can</code>, <code>level</code>.</span></div><div class=asyncapi-render__schema-row><strong>result.frag</strong><code>object</code><span>Данные фрагмента фотографии. Возвращается только для комментария к фрагменту.</span></div><div class=asyncapi-render__schema-row><strong>rid</strong><code>string</code><span>Идентификатор Socket.IO/RPC-запроса.</span></div><div class=asyncapi-render__schema-row><strong>responseTime</strong><code>number</code><span>Время обработки запроса в миллисекундах.</span></div></div></div></section><section class=asyncapi-render__section><div class=asyncapi-render__head><h2>Messages</h2></div><div class=asyncapi-render__body><div class=asyncapi-render__list><div class=asyncapi-render__row><strong>commentCreateRequest</strong><span>Request payload для <code>comment.create</code>. Содержит три примера: комментарий к фото, ответ на комментарий, комментарий к фрагменту.</span></div><div class=asyncapi-render__row><strong>commentCreateResponse</strong><span>Response payload для <code>comment.create</code>. Пример показывает созданный комментарий к фотографии.</span></div></div></div></section><section class=asyncapi-render__section><div class=asyncapi-render__head><h2>Examples</h2></div><div class=asyncapi-render__body><div class=asyncapi-render__example><div class=asyncapi-render__example-title>Комментарий первого уровня к фотографии</div><pre><code>type: photo
+obj: 2
+txt: Это комментарий первого уровня.</code></pre></div><div class=asyncapi-render__example><div class=asyncapi-render__example-title>Ответ на существующий комментарий</div><pre><code>type: photo
+obj: 2
+txt: Это ответ на комментарий.
+parent: 13
+level: 1</code></pre></div><div class=asyncapi-render__example><div class=asyncapi-render__example-title>Комментарий к выделенному фрагменту фотографии</div><pre><code>type: photo
+obj: 2
+txt: Это комментарий к фрагменту.
+fragObj:
+  l: 10.9
+  t: 6.487341772151899
+  w: 23.3
+  h: 36.86708860759494</code></pre></div></div></section></div></section></div></section></div><footer class=post-footer><ul class=post-tags></ul></footer></article></main><footer class=footer><span>&copy; 2026 <a href=https://thankfulfor.github.io/>Портфолио</a></span> ·
+<span>Powered by
+<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
+<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top id=top-link class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey=g><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up"><polyline points="17 11 12 6 7 11"/><polyline points="17 18 12 13 7 18"/></svg>
+</a><script src=/js/i18n-nav.js></script><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var toplink=document.getElementById("top-link");window.onscroll=function(){const e=window.innerHeight;document.body.scrollTop>e||document.documentElement.scrollTop>e?toplink.classList.remove("hidden"):toplink.classList.add("hidden")}</script><script>document.querySelectorAll("pre > code").forEach(e=>{const n=e.parentNode.parentNode,t=document.createElement("button");t.classList.add("copy-code"),t.innerHTML="копировать";function s(){t.innerHTML="скопировано!",setTimeout(()=>{t.innerHTML="копировать"},2e3)}t.addEventListener("click",t=>{if("clipboard"in navigator){navigator.clipboard.writeText(e.textContent),s();return}const n=document.createRange();n.selectNodeContents(e);const o=window.getSelection();o.removeAllRanges(),o.addRange(n);try{document.execCommand("copy"),s()}catch{}o.removeRange(n)}),n.classList.contains("highlight")?n.appendChild(t):n.parentNode.firstChild==n||(e.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?e.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(t):e.parentNode.appendChild(t))})</script></body></html>

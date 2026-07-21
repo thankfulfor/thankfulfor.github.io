@@ -28,23 +28,11 @@ jobs:
       - name: Prepare static site
         run: |
           mkdir _site
-          cp -R \
-            .nojekyll \
-            404.html \
-            assets \
-            comment.create.yaml \
-            css \
-            email-change-ux-case \
-            images \
-            index.html \
-            index.xml \
-            js \
-            page \
-            pastvu-internal-api-case \
-            profile-grouping-help-case \
-            release-banner-case \
-            sitemap.xml \
-            _site/
+          rsync -a \
+            --exclude .git \
+            --exclude .github \
+            --exclude _site \
+            ./ _site/
 
       - name: Configure Pages
         uses: actions/configure-pages@v5

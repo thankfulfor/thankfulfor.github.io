@@ -12,6 +12,9 @@ public/
 # Локальные бинарники
 bin/
 
+# Личный рабочий план
+PLAN.md
+
 # Python
 __pycache__/
 *.pyc

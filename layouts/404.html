@@ -1,0 +1,13 @@
+{{- define "main" -}}
+<script>
+  (function () {
+    var path = window.location.pathname;
+    if (path === "/portfolio" || path.indexOf("/portfolio/") === 0) {
+      var nextPath = path.replace(/^\/portfolio/, "") || "/";
+      var nextUrl = nextPath + window.location.search + window.location.hash;
+      window.location.replace(nextUrl);
+    }
+  })();
+</script>
+<div class="not-found">404</div>
+{{- end -}}

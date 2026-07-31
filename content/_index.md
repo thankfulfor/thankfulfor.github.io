@@ -1,0 +1,37 @@
+---
+title: Главная
+ShowToc: false
+---
+
+<section class="portfolio-map">
+  <h2>Карта сайта</h2>
+  <ul>
+    <li><a href="/">Главная</a></li>
+    <li>Кейсы
+      <ul>
+        <li>
+          Документация для разработчиков
+          <ul>
+            <li><a href="/pastvu-internal-api-case/">API-документация: AsyncAPI для Socket.IO</a></li>
+            <li><a href="/pastvu-photo-give-for-page-case/">API-документация для внешних разработчиков: photo.giveForPage в PastVu</a></li>
+          </ul>
+        </li>
+        <li>
+          Пользовательская документация
+          <ul>
+            <li><a href="/pastvu-shooting-direction-filter-case/">Руководство пользователя: фильтр направления съёмки</a></li>
+            <li><a href="/profile-grouping-help-case/">Справочная статья: как связать профили</a></li>
+          </ul>
+        </li>
+        <li>
+          Сервисные коммуникации
+          <ul>
+            <li><a href="/careerist-service-email-case/">Письмо об удалении аккаунта и резюме</a></li>
+            <li><a href="/email-change-ux-case/">Попап о дополнительной почте</a></li>
+            <li><a href="/release-banner-case/">Баннер о релизе</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</section>

@@ -1,0 +1,29 @@
+baseURL = "https://thankfulfor.github.io/"
+locale = "ru-ru"
+defaultContentLanguage = "ru"
+title = "Портфолио"
+theme = "PaperMod"
+disableKinds = ["taxonomy", "term"]
+
+[pagination]
+pagerSize = 10
+
+[params]
+defaultTheme = "dark"
+disableThemeToggle = true
+ShowReadingTime = true
+ShowShareButtons = false
+ShowPostNavLinks = true
+ShowCodeCopyButtons = true
+ShowBreadCrumbs = true
+ShowToc = false
+TocOpen = true
+yandexMetrikaID = "111128618"
+
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.highlight]
+    noClasses = false

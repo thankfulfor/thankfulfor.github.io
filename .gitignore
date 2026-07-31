@@ -1,0 +1,30 @@
+# Виртуальное окружение
+venv/
+env/
+.venv/
+
+# Сгенерированный сайт MkDocs
+site/
+public/
+.cache/
+.hugo_build.lock
+
+# Локальные бинарники
+bin/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db

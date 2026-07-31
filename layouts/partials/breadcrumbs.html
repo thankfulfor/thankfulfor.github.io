@@ -1,0 +1,26 @@
+{{- if (.Param "ShowBreadCrumbs") -}}
+{{- $homeURL := site.Home.RelPermalink -}}
+{{- $title := .Title -}}
+{{- if not $title -}}
+  {{- with findRE `(?m)^#\s+(.+)$` .RawContent 1 -}}
+    {{- $title = replaceRE `^#\s+` "" (index . 0) -}}
+  {{- end -}}
+{{- end -}}
+{{- $title = $title | plainify -}}
+{{- $parentTitle := .Param "parentTitle" -}}
+{{- $parentURL := .Param "parentURL" -}}
+
+<nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
+  <a href="{{ $homeURL }}">Главная</a>
+  {{- if not .IsHome -}}
+    {{- if and $parentTitle $parentURL -}}
+      <span class="breadcrumb-separator">/</span>
+      <a href="{{ $parentURL | relURL }}">{{ $parentTitle }}</a>
+    {{- end -}}
+    {{- if $title -}}
+      <span class="breadcrumb-separator">/</span>
+      <span class="breadcrumb-current">{{ $title }}</span>
+    {{- end -}}
+  {{- end -}}
+</nav>
+{{- end -}}

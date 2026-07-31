@@ -1,0 +1,294 @@
+---
+title: comment.create.yaml
+description: Формальная AsyncAPI YAML-схема Socket.IO-метода comment.create.
+url: /comment.create.yaml/
+parentTitle: "API-документация: AsyncAPI для Socket.IO-метода comment.create"
+parentURL: /pastvu-internal-api-case/
+---
+
+<div class="yaml-reference-page">
+  <p>Это формальная AsyncAPI YAML-схема метода <code>comment.create</code>. HTML-версия нужна для чтения в браузере; сырой YAML для инструментов доступен отдельно.</p>
+  <p><a class="asyncapi-page__action" href="/schemas/comment.create.yaml">Открыть сырой YAML</a></p>
+
+```yaml
+asyncapi: 3.1.0
+id: urn:pastvu:socketio:comment-create
+
+info:
+  title: PastVu comment.create Socket.IO API
+  version: 1.0.0
+  description: >
+    AsyncAPI-описание Socket.IO action `comment.create`.
+    Метод создаёт комментарий к фотографии или новости, ответ на существующий
+    комментарий или комментарий к фрагменту фотографии.
+
+defaultContentType: application/json
+
+servers:
+  local:
+    host: localhost:3000
+    protocol: socket.io
+    description: Локальное окружение PastVu.
+
+channels:
+  commentCreate:
+    address: comment.create
+    title: comment.create request
+    description: Socket.IO action для создания комментария.
+    messages:
+      commentCreateRequest:
+        $ref: "#/components/messages/commentCreateRequest"
+  commentCreateReply:
+    address: null
+    title: comment.create reply
+    description: >
+      Ответ приходит в callback Socket.IO/RPC-вызова. Отдельный адрес ответа
+      в коде не задан.
+    messages:
+      commentCreateResponse:
+        $ref: "#/components/messages/commentCreateResponse"
+
+operations:
+  createComment:
+    title: Создать комментарий
+    summary: Создаёт комментарий к фотографии или новости.
+    description: >
+      Frontend отправляет Socket.IO action `comment.create` с payload.
+      Backend возвращает созданный комментарий и, если нужно, данные фрагмента фотографии.
+    action: send
+    channel:
+      $ref: "#/channels/commentCreate"
+    messages:
+      - $ref: "#/channels/commentCreate/messages/commentCreateRequest"
+    reply:
+      channel:
+        $ref: "#/channels/commentCreateReply"
+      messages:
+        - $ref: "#/channels/commentCreateReply/messages/commentCreateResponse"
+
+components:
+  messages:
+    commentCreateRequest:
+      name: commentCreateRequest
+      title: Request payload для comment.create
+      contentType: application/json
+      payload:
+        $ref: "#/components/schemas/commentCreateRequestPayload"
+      examples:
+        - name: commentToPhoto
+          summary: Комментарий первого уровня к фотографии.
+          payload:
+            type: photo
+            obj: 2
+            txt: Это комментарий первого уровня.
+        - name: replyToComment
+          summary: Ответ на существующий комментарий.
+          payload:
+            type: photo
+            obj: 2
+            txt: Это ответ на комментарий.
+            parent: 13
+            level: 1
+        - name: commentToPhotoFragment
+          summary: Комментарий к выделенному фрагменту фотографии.
+          payload:
+            type: photo
+            obj: 2
+            txt: Это комментарий к фрагменту.
+            fragObj:
+              l: 10.9
+              t: 6.487341772151899
+              w: 23.3
+              h: 36.86708860759494
+
+    commentCreateResponse:
+      name: commentCreateResponse
+      title: Response payload для comment.create
+      contentType: application/json
+      payload:
+        $ref: "#/components/schemas/commentCreateResponsePayload"
+      examples:
+        - name: createdPhotoComment
+          summary: Успешный ответ при создании комментария к фотографии.
+          payload:
+            result:
+              comment:
+                cid: 13
+                obj: 2
+                user: admin
+                stamp: "2026-07-03T16:12:43.224Z"
+                txt: Это комментарий первого уровня.
+                can: {}
+                level: 0
+                geo:
+                  - -121.596679
+                  - 33.027375
+                r0: 1000000
+                s: 5
+                type: 1
+            responseTime: 31
+            rid: bvo2t8zcvb
+
+  schemas:
+    commentCreateRequestPayload:
+      type: object
+      required:
+        - obj
+        - txt
+      additionalProperties: true
+      properties:
+        obj:
+          type: number
+          description: cid фотографии или новости, к которой добавляется комментарий.
+        txt:
+          type: string
+          maxLength: 12000
+          description: Текст комментария.
+        type:
+          type: string
+          enum:
+            - photo
+            - news
+          description: Тип объекта, к которому добавляется комментарий.
+        parent:
+          type: number
+          description: cid родительского комментария, к которому добавляется ответ.
+        level:
+          type: number
+          maximum: 9
+          description: Уровень вложенности ответа. Передаётся вместе с parent.
+        fragObj:
+          $ref: "#/components/schemas/commentFragmentInput"
+
+    commentFragmentInput:
+      type: object
+      description: Координаты выделенного фрагмента фотографии.
+      properties:
+        l:
+          type: number
+          description: Отступ слева от изображения, в процентах.
+        t:
+          type: number
+          description: Отступ сверху от изображения, в процентах.
+        w:
+          type: number
+          description: Ширина выделенного фрагмента, в процентах.
+        h:
+          type: number
+          description: Высота выделенного фрагмента, в процентах.
+
+    commentCreateResponsePayload:
+      type: object
+      required:
+        - result
+      properties:
+        result:
+          type: object
+          required:
+            - comment
+          properties:
+            comment:
+              $ref: "#/components/schemas/createdComment"
+            frag:
+              $ref: "#/components/schemas/commentFragment"
+        rid:
+          type: string
+          description: Идентификатор Socket.IO/RPC-запроса.
+        responseTime:
+          type: number
+          description: Время обработки запроса в миллисекундах.
+
+    createdComment:
+      type: object
+      required:
+        - cid
+        - obj
+        - user
+        - stamp
+        - txt
+        - can
+        - level
+      properties:
+        cid:
+          type: number
+          description: cid созданного комментария.
+        obj:
+          type: number
+          description: cid фотографии или новости.
+        user:
+          type: string
+          description: Логин пользователя, создавшего комментарий.
+        stamp:
+          type: string
+          format: date-time
+          description: Дата и время создания комментария.
+        txt:
+          type: string
+          description: Текст комментария после обработки backend.
+        can:
+          type: object
+          description: Объект прав для комментария.
+        level:
+          type: number
+          description: Уровень вложенности комментария.
+        parent:
+          type: number
+          description: cid родительского комментария.
+        frag:
+          type: boolean
+          description: true, если комментарий привязан к фрагменту фотографии.
+        s:
+          type: number
+          description: Статус фотографии.
+        type:
+          type: number
+          enum:
+            - 1
+            - 2
+          description: "Числовой тип изображения: 1 — фотография, 2 — картина."
+        geo:
+          type: array
+          items:
+            type: number
+          description: "Координаты фотографии в формате [lng, lat]."
+        r0:
+          type: number
+          description: Идентификатор региона фотографии уровня 0.
+        r1:
+          type: number
+          description: Идентификатор региона фотографии уровня 1.
+        r2:
+          type: number
+          description: Идентификатор региона фотографии уровня 2.
+        r3:
+          type: number
+          description: Идентификатор региона фотографии уровня 3.
+        r4:
+          type: number
+          description: Идентификатор региона фотографии уровня 4.
+        r5:
+          type: number
+          description: Идентификатор региона фотографии уровня 5.
+
+    commentFragment:
+      type: object
+      description: Данные фрагмента фотографии. Возвращается только для комментария к фрагменту.
+      properties:
+        cid:
+          type: number
+          description: cid комментария, к которому относится фрагмент.
+        l:
+          type: number
+          description: Отступ слева от изображения, в процентах.
+        t:
+          type: number
+          description: Отступ сверху от изображения, в процентах.
+        w:
+          type: number
+          description: Ширина выделенного фрагмента, в процентах.
+        h:
+          type: number
+          description: Высота выделенного фрагмента, в процентах.
+
+```
+</div>

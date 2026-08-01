@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="refresh" content="0; url=/">
+    <link rel="canonical" href="/">
+    <title>Переход на главную</title>
+    <script>
+      (function () {
+        var nextUrl = "/" + window.location.search + window.location.hash;
+        window.location.replace(nextUrl);
+      })();
+    </script>
+  </head>
+  <body>
+    <p>Если переход не сработал, откройте <a href="/">главную страницу</a>.</p>
+  </body>
+</html>

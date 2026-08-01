@@ -2,6 +2,13 @@
 <script>
   (function () {
     var path = window.location.pathname;
+
+    if (path === "/p" || path === "/p/") {
+      var homeUrl = "/" + window.location.search + window.location.hash;
+      window.location.replace(homeUrl);
+      return;
+    }
+
     if (path === "/portfolio" || path.indexOf("/portfolio/") === 0) {
       var nextPath = path.replace(/^\/portfolio/, "") || "/";
       var nextUrl = nextPath + window.location.search + window.location.hash;
@@ -9,5 +16,19 @@
     }
   })();
 </script>
-<div class="not-found">404</div>
+<section class="not-found">
+  <p class="not-found__code">404</p>
+  <h1>Страница не найдена</h1>
+  <p>
+    Возможно, ссылка устарела, в адресе есть опечатка или страница была перенесена.
+  </p>
+  <p>
+    Перейдите на главную страницу портфолио или откройте один из кейсов.
+  </p>
+  <nav class="not-found__actions" aria-label="Куда перейти">
+    <a href="/">На главную</a>
+    <a href="/pastvu-photo-give-for-page-case/">API-документация для внешних разработчиков</a>
+    <a href="/pastvu-internal-api-case/">API reference для Socket.IO-метода</a>
+  </nav>
+</section>
 {{- end -}}

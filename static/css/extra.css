@@ -156,40 +156,44 @@ body {
   margin-bottom: 0;
 }
 
-.not-found {
+.portfolio-404 {
+  box-sizing: border-box;
+  width: min(720px, calc(100% - 2rem));
   max-width: 720px;
   margin: 3rem auto;
   border: 1px solid #2f2f2f;
   border-radius: 14px;
   background: #161616;
   padding: 1.5rem;
+  text-align: left;
 }
 
-.not-found__code {
+.portfolio-404__code {
   margin: 0 0 0.25rem;
   color: #aeb7c4;
   font-size: 0.95rem;
   letter-spacing: 0.08em;
 }
 
-.not-found h1 {
+.portfolio-404 h1 {
   margin: 0 0 1rem;
 }
 
-.not-found p {
+.portfolio-404 p {
   color: var(--content);
 }
 
-.not-found__actions {
+.portfolio-404__actions {
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
   margin-top: 1.25rem;
 }
 
-.not-found__actions a {
+.portfolio-404__actions a {
   color: var(--primary);
   font-weight: 400;
+  overflow-wrap: anywhere;
 }
 
 h1 {
@@ -217,6 +221,11 @@ h2 {
 @media (max-width: 768px) {
   .portfolio-map {
     padding: 0.85rem;
+  }
+
+  .portfolio-404 {
+    margin: 1.5rem auto;
+    padding: 1rem;
   }
 }
 

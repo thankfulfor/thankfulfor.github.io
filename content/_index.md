@@ -31,6 +31,12 @@ ShowToc: false
             <li><a href="/release-banner-case/">Баннер о релизе</a></li>
           </ul>
         </li>
+        <li>
+          Информационные материалы
+          <ul>
+            <li><a href="/musoroprovod-notice-case/">Объявление у мусоропровода: как превратить запрет в понятную инструкцию</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>

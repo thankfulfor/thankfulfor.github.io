@@ -37,6 +37,12 @@ ShowToc: false
             <li><a href="/musoroprovod-notice-case/">Объявление у мусоропровода: как превратить запрет в понятную инструкцию</a></li>
           </ul>
         </li>
+        <li>
+          Интерактивные прототипы
+          <ul>
+            <li><a href="/pastvu-kontiki-integration/">Интеграция PastVu и Kontiki Maps: карта домов и исторических материалов</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>

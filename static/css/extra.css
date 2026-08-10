@@ -74,6 +74,11 @@ body {
   font-weight: 400;
 }
 
+.post-content a {
+  text-decoration-thickness: 0.04em;
+  text-underline-offset: 0.18em;
+}
+
 #menu a:hover,
 .post-content a:hover {
   color: #ffffff;

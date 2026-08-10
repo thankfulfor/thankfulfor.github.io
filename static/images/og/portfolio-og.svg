@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Жанна Нарсия, Technical Writer</title>
+  <desc id="desc">Open Graph карточка портфолио технического писателя: API, Developer Docs, Docs-as-Code.</desc>
+  <rect width="1200" height="630" fill="#111318"/>
+  <rect x="56" y="56" width="1088" height="518" rx="28" fill="#181b22" stroke="#3b4252" stroke-width="2"/>
+  <path d="M56 574H1144V488C984 530 850 512 704 462C520 399 356 384 56 452Z" fill="#202630"/>
+  <circle cx="1040" cy="130" r="72" fill="#2c8f7b" opacity="0.18"/>
+  <circle cx="976" cy="190" r="116" fill="#c78a3b" opacity="0.1"/>
+  <text x="104" y="184" fill="#aab4c4" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="600" letter-spacing="0">PORTFOLIO</text>
+  <text x="104" y="292" fill="#f2f5f8" font-family="Inter, Arial, sans-serif" font-size="76" font-weight="750" letter-spacing="0">Жанна Нарсия</text>
+  <text x="104" y="374" fill="#d7dde7" font-family="Inter, Arial, sans-serif" font-size="46" font-weight="600" letter-spacing="0">Technical Writer</text>
+  <text x="104" y="474" fill="#8fd4c1" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="600" letter-spacing="0">API · Developer Docs · Docs-as-Code</text>
+</svg>

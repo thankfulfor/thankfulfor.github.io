@@ -1,7 +1,7 @@
 baseURL = "https://thankfulfor.github.io/"
 locale = "ru-ru"
 defaultContentLanguage = "ru"
-title = "Портфолио"
+title = "Портфолио технического писателя"
 theme = "PaperMod"
 disableKinds = ["taxonomy", "term"]
 
@@ -9,6 +9,8 @@ disableKinds = ["taxonomy", "term"]
 pagerSize = 10
 
 [params]
+description = "Техническая и пользовательская документация, API, интеграции и docs-as-code. Кейсы с PastVu, AsyncAPI и картографическими сервисами."
+images = ["/images/og/portfolio-og.png"]
 defaultTheme = "dark"
 disableThemeToggle = true
 ShowReadingTime = true

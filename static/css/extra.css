@@ -69,18 +69,18 @@ body {
 .nav a,
 #menu a,
 .logo a,
-.post-content a {
+.md-content a {
   color: var(--primary);
   font-weight: 400;
 }
 
-.post-content a {
-  text-decoration-thickness: 0.04em;
+.md-content a {
+  text-decoration-thickness: 0.03em;
   text-underline-offset: 0.18em;
 }
 
 #menu a:hover,
-.post-content a:hover {
+.md-content a:hover {
   color: #ffffff;
 }
 

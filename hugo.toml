@@ -1,7 +1,7 @@
 baseURL = "https://thankfulfor.github.io/"
 locale = "ru-ru"
 defaultContentLanguage = "ru"
-title = "Портфолио технического писателя"
+title = "Жанна Нарсия, технический писатель. Портфолио"
 theme = "PaperMod"
 disableKinds = ["taxonomy", "term"]
 

@@ -6,7 +6,7 @@ ShowToc: false
 
 <section class="portfolio-map">
   <ul>
-    <li><a href="/">Обо мне</a></li>
+    <li><a href="/about/">Обо мне</a></li>
     <li>
       <h3>Документация для разработчиков</h3>
       <ul>

@@ -1,3 +1,8 @@
+---
+title: "API-документация для внешних разработчиков: photo.giveForPage в PastVu"
+description: "Кейс о дополнении публичной документации PastVu: пример запроса, структура ответа и ошибки метода photo.giveForPage."
+---
+
 # API-документация для внешних разработчиков: `photo.giveForPage` в PastVu
 
 <div class="case-summary">

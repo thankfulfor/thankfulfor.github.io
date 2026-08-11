@@ -145,6 +145,29 @@ body {
   background: #1f1f1f;
 }
 
+.about-section {
+  max-width: 760px;
+  margin: 1.5rem 0 2rem;
+}
+
+.about-section__lead {
+  color: #f0f0f0 !important;
+  font-size: 1.15rem;
+  line-height: 1.55;
+}
+
+.about-section__facts {
+  margin-top: 1rem;
+}
+
+.about-section__facts li + li {
+  margin-top: 0.35rem;
+}
+
+.about-section .skill-chips {
+  margin-top: 1.1rem;
+}
+
 .portfolio-map {
   border: 1px solid #2f2f2f;
   border-radius: 14px;
@@ -165,6 +188,15 @@ body {
 
 .portfolio-map ul {
   margin-bottom: 0;
+}
+
+.portfolio-map a {
+  text-decoration: none;
+}
+
+.portfolio-map a:hover,
+.portfolio-map a:focus-visible {
+  color: #ffffff;
 }
 
 .portfolio-404 {
@@ -230,6 +262,7 @@ h2 {
 }
 
 @media (max-width: 768px) {
+  .about-section,
   .portfolio-map {
     padding: 0.85rem;
   }
@@ -364,7 +397,7 @@ h2 {
 
 .case-nav a {
   color: var(--secondary);
-  text-decoration: underline;
+  text-decoration: none;
   text-underline-offset: 0.18em;
 }
 

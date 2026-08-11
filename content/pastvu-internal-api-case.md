@@ -1,3 +1,8 @@
+---
+title: "API-документация: AsyncAPI для Socket.IO-метода comment.create"
+description: "Кейс о восстановлении контракта Socket.IO-метода PastVu по коду, моделям данных и Network frames."
+---
+
 # API-документация: AsyncAPI для Socket.IO-метода comment.create
 
 <div class="case-summary">

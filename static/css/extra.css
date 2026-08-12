@@ -164,8 +164,22 @@ body {
   margin-top: 0.35rem;
 }
 
+.about-section__block {
+  margin-top: 1.6rem;
+}
+
 .about-section .skill-chips {
-  margin-top: 1.1rem;
+  margin-top: 0.65rem;
+}
+
+.about-section__works,
+.about-section__contacts {
+  margin-top: 0.45rem;
+}
+
+.about-section__works li + li,
+.about-section__contacts li + li {
+  margin-top: 0.35rem;
 }
 
 .portfolio-map {

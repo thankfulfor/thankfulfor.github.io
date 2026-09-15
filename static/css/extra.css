@@ -173,11 +173,13 @@ body {
 }
 
 .about-section__works,
+.about-section__education,
 .about-section__contacts {
   margin-top: 0.45rem;
 }
 
 .about-section__works li + li,
+.about-section__education li + li,
 .about-section__contacts li + li {
   margin-top: 0.35rem;
 }

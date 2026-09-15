@@ -10,20 +10,25 @@ hideMeta: true
 <div class="about-section">
 
 <p class="about-section__lead">
-  Технический писатель с frontend-бэкграундом и десятью годами инженерного контекста в продуктовых IT-командах.
-  Фокус — документация для разработчиков, API, интеграции и docs-as-code.
+  Технический писатель с frontend-бэкграундом и опытом работы в продуктовых IT-командах с 2015 года.
+  Фокус — API, интеграции, developer documentation и docs-as-code.
 </p>
 
 <p>
-  Самостоятельно разбираюсь в работе сервиса по коду, контрактам, интерфейсу и фактическим запросам.
-  Уточняю неочевидную логику у разработчиков, аналитиков и QA и превращаю её в API-документацию,
-  интеграционные руководства, инструкции, FAQ и материалы базы знаний.
+  Самостоятельно исследую поведение продукта по интерфейсу, требованиям, API, коду и фактическим данным.
+  Проверяю неоднозначные места у разработчиков, аналитиков и QA и фиксирую результат в документации.
+</p>
+
+<p>
+  В коммерческих командах работала с внутренней документацией, требованиями, frontend/backend data contracts,
+  troubleshooting и техническими задачами. API-документацию, интеграционные руководства и docs-as-code
+  развиваю как отдельное направление в портфолио.
 </p>
 
 <ul class="about-section__facts">
-  <li>Восстанавливаю API-контракты по frontend/backend-коду, DevTools, curl/Postman и фактическому обмену данными.</li>
-  <li>Пишу и актуализирую документацию в Markdown, Confluence и docs-as-code-процессах на GitHub Pages.</li>
-  <li>10 лет работала внутри продуктовой разработки: понимаю жизненный цикл задачи, взаимодействие frontend/backend и разговариваю с разработчиками на одном техническом языке.</li>
+  <li>Исследую фактическое поведение API по DevTools, curl, JSON и коду, когда он доступен; сопоставляю его с требованиями и интерфейсом.</li>
+  <li>В коммерческой работе пишу и актуализирую документацию в Confluence; в портфолио работаю с Markdown, GitHub Pages и docs-as-code-процессом.</li>
+  <li>Понимаю жизненный цикл задачи, взаимодействие frontend/backend и разговариваю с разработчиками на одном техническом языке.</li>
 </ul>
 
 <section class="about-section__block">
@@ -57,15 +62,36 @@ hideMeta: true
   <h2>Стек</h2>
 <div class="skill-chips" aria-label="Ключевые инструменты и форматы">
   <span>REST API</span>
+  <span>JSON</span>
+  <span>DevTools</span>
+  <span>curl</span>
   <span>Swagger/OpenAPI</span>
   <span>AsyncAPI</span>
   <span>Markdown</span>
-  <span>Hugo</span>
   <span>Git</span>
+  <span>GitHub Pages</span>
+  <span>Hugo</span>
   <span>Confluence</span>
   <span>Jira</span>
   <span>YouTrack</span>
 </div>
+</section>
+
+<section class="about-section__block">
+  <h2>Образование</h2>
+  <ul class="about-section__education">
+    <li>МИРЭА — Российский технологический университет · Вычислительные машины, комплексы, системы и сети · 2008</li>
+  </ul>
+</section>
+
+<section class="about-section__block">
+  <h2>Доп. обучение</h2>
+  <ul class="about-section__education">
+    <li>Documentat.io — «DITA: документирование сложных систем и линеек продуктов» · обучение с сентября 2026</li>
+    <li>Documentat.io — «Рисуем понятные схемы, диаграммы, иллюстрации» · 2026</li>
+    <li>Нетология — UX-писатель · 2021 · диплом</li>
+    <li>Нетология — UI-дизайн · 2021 · диплом</li>
+  </ul>
 </section>
 
 <section class="about-section__block">

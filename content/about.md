@@ -94,6 +94,7 @@ hideMeta: true
   <h2>Доп. обучение</h2>
   <ul class="about-section__education">
     <li>Documentat.io — «Документирование сложных систем и линеек продуктов» (DITA) · 2026</li>
+    <li>Documentat.io — «Рисуем понятные схемы, диаграммы, иллюстрации» · 2026</li>
     <li>Нетология — «UX-писатель» · 2021</li>
     <li>Учебный центр «Специалист» — курсы по HTML, CSS и JavaScript · 2015</li>
   </ul>

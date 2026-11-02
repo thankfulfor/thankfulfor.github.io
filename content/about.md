@@ -93,6 +93,7 @@ hideMeta: true
 <section class="about-section__block">
   <h2>Доп. обучение</h2>
   <ul class="about-section__education">
+    <li>Documentat.io — <a href="https://documentat.io/courses/sme-again/">«Эксперт по экспертам. Продуктивная коммуникация с носителями знания»</a> · 2026</li>
     <li>Documentat.io — «Документирование сложных систем и линеек продуктов» (DITA) · 2026</li>
     <li>Documentat.io — «Рисуем понятные схемы, диаграммы, иллюстрации» · 2026</li>
     <li>Нетология — «UX-писатель» · 2021</li>

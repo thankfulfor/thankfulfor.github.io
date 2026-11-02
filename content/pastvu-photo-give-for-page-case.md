@@ -1,6 +1,6 @@
 ---
 title: "API-документация для внешних разработчиков: photo.giveForPage в PastVu"
-description: "Кейс о дополнении публичной документации PastVu: пример запроса, структура ответа и ошибки метода photo.giveForPage."
+description: "Принятый вклад в публичную документацию PastVu: пример запроса, структура ответа и ошибки метода photo.giveForPage."
 ---
 
 # API-документация для внешних разработчиков: `photo.giveForPage` в PastVu
@@ -20,7 +20,7 @@ description: "Кейс о дополнении публичной докумен
   </div>
   <div class="case-summary__row">
     <p class="case-summary__label">Статус</p>
-    <p><a href="https://github.com/PastVu/docs/pull/77">PR #77</a> открыт и ожидает ревью.</p>
+    <p><a href="https://github.com/PastVu/docs/pull/77">PR #77</a> одобрен мейнтейнером и принят в официальную документацию PastVu.</p>
   </div>
 </div>
 
@@ -106,6 +106,8 @@ description: "Кейс о дополнении публичной докумен
 
 ## Результат и статус
 
-Подготовлен [PR #77 в PastVu/docs](https://github.com/PastVu/docs/pull/77): он обновляет английскую и русскую версии справочника `photo.giveForPage`.
+Изменения в английской и русской версиях справочника вошли в официальную документацию PastVu.
 
-PR ещё не принят. После ревью я добавлю в этот кейс итог: какие замечания поступили, что изменилось в тексте и чему научила обратная связь.
+2 ноября 2026 года мейнтейнер проекта [Руслан Кабалин](https://github.com/kabalin) синхронизировал мою ветку с `main`, одобрил [PR #77](https://github.com/PastVu/docs/pull/77) без замечаний и объединил его с основной веткой.
+
+Итог — подготовленное на основе реальных ответов и серверного кода [описание `photo.giveForPage`](https://docs.pastvu.com/dev/api#photogiveforpage) теперь доступно пользователям публичного API. [Посмотреть итоговый merge-коммит](https://github.com/PastVu/docs/commit/887ee441d27a2ea6fe05a482df1097133d0864c8).

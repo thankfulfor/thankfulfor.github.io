@@ -98,7 +98,7 @@ hideMeta: true
     <li>Documentat.io — «Документирование сложных систем и линеек продуктов» (DITA) · 2026</li>
     <li>Documentat.io — «Рисуем понятные схемы, диаграммы, иллюстрации» · 2026</li>
     <li>Нетология — «UX-писатель» · 2021</li>
-    <li>HTML Academy — «Базовый JavaScript», «Продвинутый HTML и CSS», «JavaScript, уровень 2» и «JavaScript, уровень 3» · 2015–2019</li>
+    <li>HTML Academy — «Базовый JavaScript», «Продвинутый HTML и CSS», «JavaScript, уровень 2» и «JavaScript, уровень 3» · 2015, 2016, 2019</li>
     <li>Учебный центр «Специалист» — курсы по HTML, CSS и JavaScript · 2015</li>
   </ul>
 </section>

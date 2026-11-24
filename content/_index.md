@@ -10,8 +10,7 @@ ShowToc: false
     <li>
       <h3>Документация для разработчиков</h3>
       <ul>
-        <li><a href="/pastvu-internal-api-case/">API-документация: AsyncAPI для Socket.IO</a></li>
-        <li><a href="/pastvu-photo-give-for-page-case/">API-документация для внешних разработчиков: photo.giveForPage в PastVu</a></li>
+        <li><a href="/pastvu-api-documentation-case/">Документация API PastVu: публичный REST API и внутренний Socket.IO</a></li>
       </ul>
     </li>
     <li>

@@ -45,8 +45,8 @@ hideMeta: true
   <h2>Избранные работы</h2>
   <ul class="about-section__works">
     <li>
-      <a href="/pastvu-internal-api-case/">API-документация PastVu</a> —
-      восстановление контракта по коду и фактическому обмену данными.
+      <a href="/pastvu-api-documentation-case/">Документация API PastVu</a> —
+      пять принятых PR, контрактный аудит публичных методов и AsyncAPI для внутреннего Socket.IO.
     </li>
     <li>
       <a href="/pastvu-kontiki-integration-case/">PastVu × Kontiki Maps</a> —

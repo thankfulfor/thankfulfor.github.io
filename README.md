@@ -33,3 +33,4 @@ hugo --minify
 - `/about/resume/`
 - `/interactive-api/`
 - `/game/find-doc-bug/`
+- `/unit-price/` — расчёт цены за килограмм или литр по фото

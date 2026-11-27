@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#10120f">
+    <meta name="description" content="Посчитайте цену товара за килограмм или литр по фотографии ценника.">
+    <title>Цена за килограмм или литр по фото</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="stylesheet" href="./styles.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/tesseract.js@7.0.0/dist/tesseract.min.js"></script>
+    <script defer src="./core.js"></script>
+    <script defer src="./app.js"></script>
+  </head>
+  <body>
+    <main class="shell">
+      <header class="hero">
+        <a class="home-link" href="/" aria-label="Вернуться на главную">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+          thankfulfor.github.io
+        </a>
+        <p class="eyebrow">Быстрый пересчёт</p>
+        <h1>Сколько это стоит<br><span>за килограмм?</span></h1>
+        <p class="lead">Сфотографируйте ценник или загрузите фото. Страница найдёт цену и количество, а вы сможете проверить цифры.</p>
+      </header>
+
+      <section class="workspace" aria-labelledby="photo-heading">
+        <div class="section-heading">
+          <div>
+            <p class="step">Фото товара или ценника</p>
+            <h2 id="photo-heading">Добавьте снимок</h2>
+          </div>
+          <span class="privacy-badge">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+            Фото остаётся у вас
+          </span>
+        </div>
+
+        <div class="source-actions" role="group" aria-label="Способ добавить фото">
+          <button class="source-button primary" id="open-camera" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 4l1.5 2H20a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V8a2 2 0 012-2h4l1.5-2h5z"/><circle cx="12" cy="13" r="4"/></svg>
+            Открыть камеру
+          </button>
+          <label class="source-button secondary" for="file-input">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4m0 0L7 9m5-5l5 5"/><path d="M4 15v4a2 2 0 002 2h12a2 2 0 002-2v-4"/></svg>
+            Загрузить фото
+          </label>
+          <input class="visually-hidden" id="file-input" type="file" accept="image/*">
+        </div>
+
+        <div class="camera-panel" id="camera-panel" hidden>
+          <video id="camera-video" playsinline muted></video>
+          <div class="camera-controls">
+            <button class="capture-button" id="capture-photo" type="button" aria-label="Сделать снимок"><span></span></button>
+            <button class="text-button" id="close-camera" type="button">Закрыть камеру</button>
+          </div>
+        </div>
+
+        <div class="preview" id="preview" hidden>
+          <img id="preview-image" alt="Выбранное фото ценника">
+          <button class="replace-button" id="replace-photo" type="button">Выбрать другое фото</button>
+        </div>
+
+        <div class="tips" id="tips">
+          <div class="tip-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M9 18h6M10 22h4"/><path d="M8.5 14.5A6 6 0 1115.5 14.5c-.9.7-1.5 1.5-1.5 2.5h-4c0-1-.6-1.8-1.5-2.5z"/></svg>
+          </div>
+          <p><strong>Чтобы цифры читались:</strong> держите камеру ровно, избегайте бликов и поместите цену с весом или объёмом в кадр.</p>
+        </div>
+
+        <button class="scan-button" id="scan-photo" type="button" disabled>
+          <span class="scan-label">Распознать и посчитать</span>
+          <span class="scan-progress" aria-hidden="true"></span>
+        </button>
+        <p class="status" id="status" role="status" aria-live="polite"></p>
+      </section>
+
+      <section class="result-card" id="result-card" aria-labelledby="result-heading">
+        <div class="result-intro">
+          <p class="step">Проверьте цифры</p>
+          <h2 id="result-heading">Расчёт</h2>
+          <p>Распознавание может ошибиться на блике или мелком шрифте. Поля можно исправить вручную.</p>
+        </div>
+
+        <form id="calculator" novalidate>
+          <div class="fields">
+            <label class="field">
+              <span>Цена товара</span>
+              <span class="input-wrap"><input id="price" inputmode="decimal" autocomplete="off" placeholder="199,90"><span>₽</span></span>
+            </label>
+            <label class="field quantity-field">
+              <span>Вес или объём</span>
+              <span class="quantity-wrap">
+                <input id="quantity" inputmode="decimal" autocomplete="off" placeholder="500">
+                <span class="select-wrap">
+                  <select id="unit" aria-label="Единица измерения">
+                    <option value="g">г</option>
+                    <option value="kg">кг</option>
+                    <option value="ml">мл</option>
+                    <option value="l">л</option>
+                  </select>
+                </span>
+              </span>
+            </label>
+          </div>
+
+          <div class="answer" id="answer" aria-live="polite">
+            <p>Цена за <span id="answer-unit">1 кг</span></p>
+            <output id="answer-value">—</output>
+            <span class="formula" id="formula">Введите цену и количество</span>
+          </div>
+        </form>
+
+        <details class="recognized-text" id="recognized-details" hidden>
+          <summary>Что удалось прочитать на фото</summary>
+          <pre id="recognized-text"></pre>
+        </details>
+      </section>
+
+      <footer>
+        <p>Расчёт выполняется в браузере. Снимок нигде не сохраняется.</p>
+        <a href="https://github.com/thankfulfor/thankfulfor.github.io" rel="noreferrer">Код на GitHub</a>
+      </footer>
+    </main>
+    <canvas id="capture-canvas" hidden></canvas>
+  </body>
+</html>

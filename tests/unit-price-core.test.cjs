@@ -24,4 +24,19 @@ assert.equal(core.extractQuantity("Пищевая ценность на 100 г\n
 assert.equal(core.extractPrice("ЦЕНА\n249 99 ₽").value, 249.99);
 assert.equal(core.calculateUnitPrice("0", "500", "g"), null);
 
+assert.deepEqual(core.extractDirectUnitPrice("630,00 ₽ за 1 кг"), { value: 630, baseUnit: "kg" });
+
+const inferred = core.productFromText("157,50 ₽\nКонфеты Рот Фронт\n630,00 ₽ за 1 кг");
+assert.equal(inferred.price, 157.5);
+assert.equal(inferred.quantity, 250);
+assert.equal(inferred.unit, "g");
+
+const ranked = core.rankProducts([
+  { name: "Дороже", price: 204, quantity: 250, unit: "g" },
+  { name: "Выгоднее", price: 119.99, quantity: 250, unit: "g" },
+  { name: "Средний", price: 157.5, quantity: 250, unit: "g" }
+]);
+assert.deepEqual(ranked.map((entry) => entry.product.name), ["Выгоднее", "Средний", "Дороже"]);
+assert.equal(core.cleanProductName("Батончики Рот Фронт\n250 г\n119,99 Р"), "Батончики Рот Фронт");
+
 console.log("unit-price core: ok");

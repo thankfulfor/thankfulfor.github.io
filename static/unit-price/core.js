@@ -104,5 +104,83 @@
     return { price: extractPrice(text), quantity: extractQuantity(text) };
   }
 
-  return { parseNumber, normalizeOcrText, calculateUnitPrice, extractQuantity, extractPrice, extractProductData };
+  function extractDirectUnitPrice(text) {
+    const normalized = normalizeOcrText(text).toLowerCase();
+    const match = normalized.match(/(\d{1,6}(?:[\s.,]\d{1,2})?)\s*₽?\s*(?:за|\/)?\s*1\s*(кг|kg|л|l)(?![\p{L}])/iu);
+    if (!match) return null;
+    const value = parseNumber(match[1].replace(/\s+(?=\d{2}$)/, "."));
+    if (!value || value <= 0) return null;
+    return { value, baseUnit: /кг|kg/iu.test(match[2]) ? "kg" : "l" };
+  }
+
+  function cleanProductName(text) {
+    const lines = normalizeOcrText(text)
+      .split(/\n+/)
+      .map((line) => line.replace(/\s+/g, " ").trim())
+      .filter(Boolean)
+      .filter((line) => !/^[-−]?\d{1,6}(?:[\s.,]\d{1,2})?\s*(?:₽|р\.?|p)$/iu.test(line))
+      .filter((line) => !/₽\s*(?:за|\/)\s*1\s*(?:кг|л)/iu.test(line))
+      .filter((line) => !/^\d+(?:[.,]\d+)?\s*(?:г|гр|кг|мл|л)$/iu.test(line));
+    return lines.join(" ").replace(/\s+/g, " ").trim().slice(0, 180) || "Товар";
+  }
+
+  function productFromText(text, overrides) {
+    const source = String(text || "");
+    const direct = extractDirectUnitPrice(source);
+    const priceCandidate = extractPrice(source);
+    const withoutDirect = source.replace(/\d{1,6}(?:[\s.,]\d{1,2})?\s*₽?\s*(?:за|\/)\s*1\s*(?:кг|kg|л|l)/giu, "");
+    const quantityCandidate = extractQuantity(withoutDirect);
+    const product = Object.assign({
+      name: cleanProductName(source),
+      price: priceCandidate ? priceCandidate.value : null,
+      quantity: quantityCandidate ? quantityCandidate.value : null,
+      unit: quantityCandidate ? quantityCandidate.unit : "g",
+      directUnitPrice: direct ? direct.value : null,
+      baseUnit: direct ? direct.baseUnit : null,
+      store: "",
+      url: "",
+      sourceText: source.trim()
+    }, overrides || {});
+
+    if ((!product.quantity || !product.unit) && product.price && product.directUnitPrice && product.baseUnit) {
+      const baseQuantity = product.price / product.directUnitPrice;
+      if (baseQuantity > 0 && baseQuantity < 1) {
+        product.quantity = Math.round(baseQuantity * 1000);
+        product.unit = product.baseUnit === "kg" ? "g" : "ml";
+      } else if (baseQuantity > 0) {
+        product.quantity = Number(baseQuantity.toFixed(3));
+        product.unit = product.baseUnit;
+      }
+    }
+    return product;
+  }
+
+  function getProductUnitPrice(product) {
+    const calculated = calculateUnitPrice(product.price, product.quantity, product.unit);
+    if (calculated) return { value: calculated.value, baseUnit: calculated.baseUnit };
+    if (product.directUnitPrice && product.baseUnit) return { value: product.directUnitPrice, baseUnit: product.baseUnit };
+    return null;
+  }
+
+  function rankProducts(products, limit) {
+    return (products || [])
+      .map((product, index) => ({ product, index, result: getProductUnitPrice(product) }))
+      .filter((entry) => entry.result && entry.result.value > 0)
+      .sort((a, b) => a.result.value - b.result.value)
+      .slice(0, limit || 3);
+  }
+
+  return {
+    parseNumber,
+    normalizeOcrText,
+    calculateUnitPrice,
+    extractQuantity,
+    extractPrice,
+    extractProductData,
+    extractDirectUnitPrice,
+    cleanProductName,
+    productFromText,
+    getProductUnitPrice,
+    rankProducts
+  };
 });

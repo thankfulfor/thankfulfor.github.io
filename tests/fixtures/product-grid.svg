@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="2800" viewBox="0 0 1080 2800">
+  <rect width="1080" height="2800" fill="#f5f5f2"/>
+  <text x="60" y="150" font-family="Arial, sans-serif" font-size="58" font-weight="700">Каталог товаров</text>
+  <text x="60" y="230" font-family="Arial, sans-serif" font-size="34">Сравните цену за килограмм</text>
+
+  <g font-family="Arial, sans-serif" fill="#111">
+    <rect x="20" y="410" width="510" height="900" rx="30" fill="#fff" stroke="#ddd"/>
+    <text x="55" y="915" font-size="40" font-weight="700">Батончики Рот Фронт</text>
+    <text x="55" y="980" font-size="38">250 г</text>
+    <text x="55" y="1120" font-size="62" font-weight="700">119,99 ₽</text>
+
+    <rect x="550" y="410" width="510" height="900" rx="30" fill="#fff" stroke="#ddd"/>
+    <text x="585" y="915" font-size="40" font-weight="700">Конфеты Батончики</text>
+    <text x="585" y="980" font-size="38">250 г</text>
+    <text x="585" y="1120" font-size="62" font-weight="700">157,50 ₽</text>
+
+    <rect x="20" y="1350" width="510" height="900" rx="30" fill="#fff" stroke="#ddd"/>
+    <text x="55" y="1855" font-size="40" font-weight="700">Батончики сливочные</text>
+    <text x="55" y="1920" font-size="38">250 г</text>
+    <text x="55" y="2060" font-size="62" font-weight="700">204,00 ₽</text>
+
+    <rect x="550" y="1350" width="510" height="900" rx="30" fill="#fff" stroke="#ddd"/>
+    <text x="585" y="1855" font-size="40" font-weight="700">Подарок конфет</text>
+    <text x="585" y="1920" font-size="38">350 г</text>
+    <text x="585" y="2060" font-size="62" font-weight="700">369,99 ₽</text>
+  </g>
+
+  <rect x="0" y="2500" width="1080" height="300" fill="#fff"/>
+</svg>

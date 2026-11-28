@@ -4,13 +4,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#10120f">
-    <meta name="description" content="Посчитайте цену товара за килограмм или литр по фотографии ценника.">
-    <title>Цена за килограмм или литр по фото</title>
+    <meta name="description" content="Посчитайте цену товара за килограмм или литр или найдите три самых выгодных товара по снимку или MHTML.">
+    <title>Цена за килограмм или литр</title>
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./styles.css?v=2">
     <script defer src="https://cdn.jsdelivr.net/npm/tesseract.js@7.0.0/dist/tesseract.min.js"></script>
-    <script defer src="./core.js"></script>
-    <script defer src="./app.js"></script>
+    <script defer src="./core.js?v=2"></script>
+    <script defer src="./app.js?v=2"></script>
+    <script defer src="./compare.js?v=2"></script>
   </head>
   <body>
     <main class="shell">
@@ -117,8 +118,67 @@
         </details>
       </section>
 
+      <section class="comparison-card" id="comparison" aria-labelledby="comparison-heading">
+        <div class="comparison-heading">
+          <div>
+            <p class="step">Сравнение списка</p>
+            <h2 id="comparison-heading">Найти топ-3 выгодных товара</h2>
+            <p>Загрузите сохранённую страницу MHTML или длинный скриншот выдачи. Проверить распознанные цифры можно перед сортировкой.</p>
+          </div>
+          <span class="privacy-badge">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+            Файл обрабатывается в браузере
+          </span>
+        </div>
+
+        <label class="compare-dropzone" for="compare-file">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4m0 0L7 9m5-5l5 5"/><path d="M4 15v4a2 2 0 002 2h12a2 2 0 002-2v-4"/></svg>
+          <span><strong>Выбрать MHTML или скриншот</strong><small>Подойдут .mhtml, .mht, JPEG, PNG и WebP</small></span>
+        </label>
+        <input class="visually-hidden" id="compare-file" type="file" accept=".mhtml,.mht,message/rfc822,image/*">
+
+        <div class="compare-file-card" id="compare-file-card" hidden>
+          <img id="compare-preview" alt="Загруженный скриншот" hidden>
+          <div class="file-copy">
+            <strong id="compare-file-name"></strong>
+            <span id="compare-file-meta"></span>
+          </div>
+          <button class="text-button" id="compare-replace" type="button">Заменить</button>
+        </div>
+
+        <button class="scan-button compare-scan" id="compare-scan" type="button" disabled>
+          <span class="compare-scan-label">Найти товары</span>
+          <span class="compare-progress" aria-hidden="true"></span>
+        </button>
+        <p class="status" id="compare-status" role="status" aria-live="polite"></p>
+
+        <div class="comparison-results" id="comparison-results" hidden>
+          <div class="top-panel">
+            <p class="step">Результат</p>
+            <h3>Самые выгодные</h3>
+            <div class="top-products" id="top-products"></div>
+          </div>
+
+          <div class="products-editor">
+            <div class="editor-heading">
+              <div>
+                <h3>Проверьте товары</h3>
+                <p>Исправьте название, цену или количество. Рейтинг обновится сразу.</p>
+              </div>
+              <span id="products-count"></span>
+            </div>
+            <div class="product-table" id="product-table"></div>
+          </div>
+
+          <details class="recognized-text" id="compare-recognized" hidden>
+            <summary>Текст, распознанный на скриншоте</summary>
+            <pre id="compare-recognized-text"></pre>
+          </details>
+        </div>
+      </section>
+
       <footer>
-        <p>Расчёт выполняется в браузере. Снимок нигде не сохраняется.</p>
+        <p>Расчёт выполняется в браузере. Загруженные файлы нигде не сохраняются.</p>
         <a href="https://github.com/thankfulfor/thankfulfor.github.io" rel="noreferrer">Код на GitHub</a>
       </footer>
     </main>
